@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  html { font-family: 'Inter', system-ui, sans-serif; }
+
+  body {
+    margin: 0;
+    background: #0b1120;
+    color: #f1f5f9;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #1e2d45; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2a3d5a; }
+
+  ::selection { background: rgba(20,184,166,0.25); }
+}
+
+@layer components {
+  .card {
+    @apply bg-bg-card border border-bg-border rounded-card p-5;
+  }
+
+  .btn-primary {
+    @apply bg-accent-teal hover:bg-teal-500 text-white font-semibold px-5 py-2.5 rounded-btn
+           transition-all duration-150 active:scale-95 text-sm tracking-wide;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border border-bg-border hover:bg-bg-hover text-text-secondary
+           hover:text-text-primary font-medium px-4 py-2.5 rounded-btn
+           transition-all duration-150 active:scale-95 text-sm;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-bg-hover text-text-secondary hover:text-text-primary
+           font-medium px-3 py-2 rounded-lg transition-all duration-150 text-sm;
+  }
+
+  .input-field {
+    @apply w-full bg-bg-input border border-bg-border text-text-primary placeholder-text-muted
+           rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-accent-teal
+           focus:ring-1 focus:ring-accent-teal/30 transition-all duration-150;
+  }
+
+  .label {
+    @apply block text-xs font-medium text-text-secondary mb-1.5 tracking-wide uppercase;
+  }
+
+  .badge-teal {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-pill text-xs font-semibold
+           bg-accent-teal/10 text-accent-teal border border-accent-teal/20;
+  }
+
+  .badge-blue {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-pill text-xs font-semibold
+           bg-accent-blue/10 text-accent-blue border border-accent-blue/20;
+  }
+
+  .badge-amber {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-pill text-xs font-semibold
+           bg-accent-amber/10 text-accent-amber border border-accent-amber/20;
+  }
+
+  .badge-red {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-pill text-xs font-semibold
+           bg-accent-red/10 text-accent-red border border-accent-red/20;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
+           text-text-secondary hover:text-text-primary hover:bg-bg-hover
+           transition-all duration-150 cursor-pointer;
+  }
+
+  .nav-item.active {
+    @apply text-accent-teal bg-accent-teal/10;
+  }
+
+  .stat-card {
+    @apply card flex flex-col gap-1.5;
+  }
+
+  .divider {
+    @apply h-px w-full bg-bg-border my-1;
+  }
+
+  .page-enter {
+    animation: slideUp 0.2s ease-out both;
+  }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-teal {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(20,184,166,0.3); }
+  50%       { box-shadow: 0 0 0 6px rgba(20,184,166,0); }
+}
+
+.pulse-teal { animation: pulse-teal 2s ease-in-out infinite; }
